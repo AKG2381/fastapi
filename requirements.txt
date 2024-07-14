@@ -1,0 +1,5 @@
+python -m venv fastapienv
+pip install fastapi
+pip install "uvicorn[standard]"
+
+
