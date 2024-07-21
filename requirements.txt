@@ -1,5 +1,18 @@
-python -m venv fastapienv
-pip install fastapi
-pip install "uvicorn[standard]"
-
-
+fastapi
+"uvicorn[standard]"
+bcrypt==4.0.1
+cryptography
+fastapi
+psycopg2-binary #this is for postgre
+PyMySQL #this is for mysql
+python-jose
+python-multipart
+SQLAlchemy
+uvicorn
+passlib
+pytest
+httpx
+pytest-asyncio
+aiofiles
+jinja2
+"python-jose[cryptography]"
