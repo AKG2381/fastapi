@@ -6,6 +6,7 @@
 !*.py
 !*.db
 !*.md
+!*.ini
 
 # Ignore directories
 .git/
