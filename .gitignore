@@ -1,1 +1,13 @@
 /FastAPI-The-Complete-Course-main
+# Ignore everything
+*
+
+# But not these files...
+!*.py
+!*.db
+!*.md
+
+# Ignore directories
+.git/
+.venv/
+__pycache__/
