@@ -1,6 +1,6 @@
 # This is an Todos application built on fastapi and sqllite
 
-## To run the application fisrt clone the directory using below url
+## To run the application : first clone the directory using below url
 
 https://github.com/AKG2381/fastapi.git
 
