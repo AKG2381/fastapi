@@ -7,8 +7,8 @@ from fastapi import APIRouter ,Depends,HTTPException, Path, Query
 
 
 
-from models import Todos,Users
-from database import SessionLocal
+from ..models import Users
+from ..database import SessionLocal
 from .auth import get_current_user
 
 router = APIRouter(
