@@ -2,6 +2,10 @@
 
 ## To run the application : first clone the directory using below url
 
+requirements :
+- install python version > 3.10
+- install and configure `sqlite3`
+
 https://github.com/AKG2381/fastapi.git
 
 - cd fastapi/Project3
