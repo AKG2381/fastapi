@@ -1,0 +1,38 @@
+
+# setup frontend using svelte
+
+"""
+command - npm init svelte fast-api-frontend
+options -create-svelte version 6.3.6
+
+            ┌  Welcome to SvelteKit!
+            │
+            ◇  Which Svelte app template?
+            │  Skeleton project
+            │
+            ◇  Add type checking with TypeScript?        
+            │  No
+            │
+            ◇  Select additional options (use arrow      
+            keys/space bar)
+            │  none
+            │
+            └  Your project is ready!
+
+            Install more integrations with:
+            npx svelte-add
+
+            Next steps:
+            1: cd fast-api-frontend
+            2: npm install
+            3: git init && git add -A && git commit -m "Initial commit" (optional)
+            4: npm run dev -- --open
+
+command - cd fast-api-frontend
+command - npm install
+
+
+cd Project1\23_middleware_and_cors_frontend_svelte\fast-api-frontend> npm run dev
+cd Project1\> uvicorn 23_middlewhere_and_cors:app --reload
+
+"""

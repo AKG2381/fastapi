@@ -1,10 +1,10 @@
 fastapi
-"uvicorn[standard]"
+uvicorn[standard]
 bcrypt==4.0.1
 cryptography
 fastapi
-psycopg2-binary #this is for postgre
-PyMySQL #this is for mysql
+psycopg2-binary
+PyMySQL
 python-jose
 python-multipart
 SQLAlchemy
@@ -15,4 +15,5 @@ httpx
 pytest-asyncio
 aiofiles
 jinja2
-"python-jose[cryptography]"
+python-jose[cryptography]
+pydantic[email]
