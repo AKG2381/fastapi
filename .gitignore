@@ -2,3 +2,10 @@
 
 __pycache__/
 *.db
+
+# Ignore the virtual environment directory
+fastenv/
+virtualenv_reset.txt
+
+# Ignore the get-pip.py script
+get-pip.py

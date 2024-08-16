@@ -1,3 +1,3 @@
-- Project1 Contains Learnings 
+- Project1 Contains Learnings
 - Project2 Basic book app
 - Projets3 is A todoApp
