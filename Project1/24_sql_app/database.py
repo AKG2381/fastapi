@@ -4,9 +4,10 @@ from sqlalchemy.orm     import sessionmaker
 
 SQLALCHEMY_DATABASE_URL = 'sqlite:///./sql_app.db'
 # my locals setup
+
 # user : postgres
 # password : Ajeet%40123
-# postgresserver : localhost -- can change whaever we want
+# postgresserver : localhost -- can change whenever we want
 # db : sql_app
 # SQLALCHEMY_DATABASE_URL = 'postgresql://user:password@postgreserver/db'
 
