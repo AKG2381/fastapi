@@ -26,5 +26,5 @@ import time
 
 app = FastAPI()
 
-app.mount('/28_static', StaticFiles(directory="28_static"),name='28_static')
+app.mount('/class_28_static', StaticFiles(directory="class_28_static"),name='class_28_static')
 

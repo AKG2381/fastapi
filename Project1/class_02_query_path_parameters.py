@@ -6,35 +6,6 @@ from pydantic import BaseModel
 
 app = FastAPI()
 
-@app.get('/',description='This is our first rout')
-async def root():
-    return {'message' : "Hello world"}
-
-
-@app.post('/')
-async def post():
-    return {'message' : "Hello from post route"}
-
-
-@app.put('/')
-async def put():
-    return {'message' : "Hello from put route"}
-
-
-@app.get('/users')
-async def list_users():
-    return {'message' : "list users route"}
-
-# put specific endpoint before dynamic endpoint
-@app.get('/users/me')
-async def get_current_user():
-    return {'message' : "This is the current user"}
-
-
-@app.get('/users/{user_id}')
-async def get_users(user_id : str):
-    return {'user_id' : user_id}
-
 class FoodEnum(str ,Enum ):
     fruits = 'fruits'
     vegetables = 'vegetables'
@@ -42,7 +13,7 @@ class FoodEnum(str ,Enum ):
 
 
 # path parameters
-@app.get('/foods/{food_name}')
+@app.get('/foods/{food_name}',description="path parameters", tags=['Get Method'])
 async def get_food(food_name : FoodEnum):
     if food_name == FoodEnum.vegetables:
         return {'food_name': food_name,
@@ -59,11 +30,13 @@ async def get_food(food_name : FoodEnum):
 
 # query and path parameters
 fake_item_db = [{'item_name' : 'Foo'},{'item_name' : 'Bar'},{'item_name' : 'Baz'}]
-@app.get('/items')
+@app.get('/items',description="query paramters", tags=['Get Method'])
 async def list_items(skip : int  =0, limit : int =10):
     return fake_item_db[skip : skip+limit]
 
-@app.get('/items/{item_id}')
+
+# required query parameter 
+@app.get('/items/{item_id}',description='required query parameter ', tags=['Get Method'])
 async def get_items(item_id : str, required_query_parameter : str,
                     q : str | None = None, short : bool = False):
     item = {'item_id' : item_id, 'required_query_parameter' : required_query_parameter}
@@ -74,7 +47,8 @@ async def get_items(item_id : str, required_query_parameter : str,
     return item
 
 
-@app.get('/users/{user_id}/items/{item_id}')
+
+@app.get('/users/{user_id}/items/{item_id}', tags=['Get Method'])
 async def get_user_items(user_id :int,item_id : str,q: str | None = None, short : bool = False):
     item =  {'item_id' : item_id, 'owner_id' : user_id}
     if q:
@@ -92,7 +66,7 @@ class Item(BaseModel):
 
 # request Body
 
-@app.post('/items')
+@app.post('/items', description='route with request body' ,tags=['Post Method'])
 async def create_items(item : Item):
     item_dict = item.model_dump()
     if item.tax:
@@ -103,7 +77,7 @@ async def create_items(item : Item):
 
 
 
-@app.put('/items/{item_id}')
+@app.put('/items/{item_id}',description="Put method with qury and path parameter",tags=['Put Method'])
 async def create_items_with_put(item_id : int,item : Item, q : str | None = None):
     result =  {'item_id' : item_id, **item.model_dump()}
     if q:
@@ -113,8 +87,8 @@ async def create_items_with_put(item_id : int,item : Item, q : str | None = None
 
 #   /item?q=ajeet&s=a&s=b&s=c
 # {"items":[{"item_id":"Foo"},{"item_id":"Bar"},{"item_id":"Baz"}],"q":"ajeet","s":["a","b","c"]}
-@app.get('/item')
-async def read_items(q : str | None = Query(...,# this means this is required value does not have an~y default value
+@app.get('/item',tags=['Get Method'])
+async def read_items(q : str | None = Query(...,# this means this is required value does not have any default value
                                             # default='firstquery',
                                              min_length=3,
                                              max_length=10,
@@ -142,7 +116,7 @@ async def read_items(q : str | None = Query(...,# this means this is required va
 # this will work 
 # http://127.0.0.1:8000/item/hidden?hidden_querry=foobar
 # but won't show anything in swagger UI
-@app.get('/item_hidden')
+@app.get('/item_hidden',tags=['Get Method'])
 async def hidden_querry_route(hidden_querry : str | None = Query(None,
                                                         include_in_schema=False      
 
@@ -152,7 +126,7 @@ async def hidden_querry_route(hidden_querry : str | None = Query(None,
     return {'hidden_querry' : 'Not Found'}
 
 
-@app.get('/items_validation/{item_id}')
+@app.get('/items_validation/{item_id}',tags=['Get Method'])
 async def read_items_validation(*  # this astrics allows to put q after item_id,
                                 #  this means all of the values after * are kwargs
                                , item_id : int = Path(...,title ='Id of the item to get',gt =10, le=100),

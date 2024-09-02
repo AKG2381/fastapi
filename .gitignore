@@ -9,3 +9,5 @@ virtualenv_reset.txt
 
 # Ignore the get-pip.py script
 get-pip.py
+
+Project1/run_all_at_a_time.py
