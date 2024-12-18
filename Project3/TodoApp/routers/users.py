@@ -52,7 +52,7 @@ async def change_password(user :user_depedency, db : db_dependency, user_verific
 
 
 @router.put("/phone_number/{phone_number}",status_code=status.HTTP_204_NO_CONTENT)
-async def phone_number(user :user_depedency, db : db_dependency, phone_number : str):
+async def change_phone_number(user :user_depedency, db : db_dependency, phone_number : str):
     if user is None:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail='Could not validate user.')
     user_model = db.query(Users).filter(Users.id == user.get('id')).first()
