@@ -7,6 +7,8 @@ __pycache__/
 fastenv/
 virtualenv_reset.txt
 
+.DS_Store
+
 # Ignore the get-pip.py script
 get-pip.py
 
